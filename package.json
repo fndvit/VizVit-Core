@@ -1,0 +1,43 @@
+{
+  "name": "@vit-foundation/vizvit-core",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fndvit/VizVit-Core.git"
+  },
+  "keywords": [
+    "vizvit-core"
+  ],
+  "author": "Aleix Alvarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fndvit/VizVit-Core/issues"
+  },
+  "homepage": "https://github.com/fndvit/VizVit-Core#readme",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.8"
+  },
+  "type": "module",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

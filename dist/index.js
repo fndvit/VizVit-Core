@@ -1,4 +1,3 @@
-// Export del DB
-export { Database } from "./db/VizVitDB.js";
-export { datasetToBarChart } from "./bridge/barchartBridge.js";
+export * as virtualDatastore from "./virtual-datastore/index.js";
+export * as utils from "./utils/index.js";
 //# sourceMappingURL=index.js.map

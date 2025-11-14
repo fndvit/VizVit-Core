@@ -28,9 +28,7 @@
     "vitest": "^4.0.8"
   },
   "type": "module",
-  "dependencies": {
-    "fs": "^0.0.1-security"
-  },
+  "dependencies": {},
   "exports": {
     ".": {
       "import": "./dist/index.js",

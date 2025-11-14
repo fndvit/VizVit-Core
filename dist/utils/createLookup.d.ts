@@ -1,1 +1,0 @@
-export declare function createLookupFromArrayOfObjects<T, U extends string | number, Y = never>(arr: T[], keyFn: (d: T) => U | U[], valFn?: (d: T) => Y): { [key in U]?: ([Y] extends [never] ? T : Y) | undefined; };

@@ -1,6 +1,6 @@
 {
   "name": "@vit-foundation/vizvit-core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,8 +29,7 @@
   },
   "type": "module",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "fs": "^0.0.1-security"
   },
   "exports": {
     ".": {

@@ -1,13 +1,2 @@
-import { Database } from "./db/VizVitDB.js";
-import { datasetToBarChart } from "./bridge/barchartBridge.js";
-const db = new Database("./data");
-db.loadAll();
-const salesDataset = db.get("sales");
-if (!salesDataset) {
-    console.log("Dataset 'sales' not found.");
-}
-else {
-    const barChartData = datasetToBarChart(salesDataset, "name", "sales");
-    console.log("prepared bar chart data:", barChartData);
-}
+export {};
 //# sourceMappingURL=main.js.map

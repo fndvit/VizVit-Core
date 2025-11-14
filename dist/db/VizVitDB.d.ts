@@ -1,18 +1,8 @@
 import type { Dataset } from "../types/index.js";
 export declare class Database {
     private datasets;
-    private baseDir;
-    constructor(baseDir: string);
-    /**
-     * Loads all CSV files from the base directory into datasets
-     */
-    loadAll(): void;
-    /**
-     * Gets a dataset by name
-     */
+    constructor();
+    loadAll(urls: string[]): Promise<void>;
     get(name: string): Dataset | undefined;
-    /**
-     * Lists all loaded datasets
-     */
     list(): string[];
 }

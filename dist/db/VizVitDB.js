@@ -1,51 +1,47 @@
-import fs from "fs";
-import path from "path";
-import { readCSV } from "../sources/csvSource.js";
+import { readCSVFromURL } from "../sources/csvSource.js";
 export class Database {
     datasets = new Map();
-    baseDir;
-    constructor(baseDir) {
-        this.baseDir = baseDir;
-    }
-    /**
-     * Loads all CSV files from the base directory into datasets
-     */
-    loadAll() {
-        const files = fs
-            .readdirSync(this.baseDir)
-            .filter((f) => f.endsWith(".csv"));
-        for (const file of files) {
-            const fullPath = path.join(this.baseDir, file);
-            const name = path.basename(file, ".csv");
-            const rawRows = readCSV(fullPath);
-            const rows = rawRows.map((r) => {
-                const normalized = {};
-                for (const [key, value] of Object.entries(r)) {
-                    if (value === "true" || value === "false")
-                        normalized[key] = value === "true";
-                    else if (!isNaN(Number(value)))
-                        normalized[key] = Number(value);
-                    else if (typeof value === "string")
-                        normalized[key] = String(value);
-                    else if (typeof value === "boolean")
-                        normalized[key] = value;
-                    else
-                        normalized[key] = String(value);
+    constructor() { }
+    async loadAll(urls) {
+        for (const url of urls) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    console.warn(`No se pudo cargar CSV desde ${url}: ${response.statusText}`);
+                    continue;
                 }
-                return normalized;
-            });
-            this.datasets.set(name, { name, rows });
+                const rawRows = await readCSVFromURL(url);
+                const rows = rawRows.map((r) => {
+                    const normalized = {};
+                    for (const [key, value] of Object.entries(r)) {
+                        if (value === "true" || value === "false")
+                            normalized[key] = value === "true";
+                        else if (!isNaN(Number(value)))
+                            normalized[key] = Number(value);
+                        else if (typeof value === "string")
+                            normalized[key] = String(value);
+                        else if (typeof value === "boolean")
+                            normalized[key] = value;
+                        else
+                            normalized[key] = String(value);
+                    }
+                    return normalized;
+                });
+                // Usa el nombre del archivo sin extensión como key
+                const name = url
+                    .split("/")
+                    .pop()
+                    ?.replace(/\.csv$/, "") || url;
+                this.datasets.set(name, { name, rows });
+            }
+            catch (err) {
+                console.error(`Error cargando CSV desde ${url}`, err);
+            }
         }
     }
-    /**
-     * Gets a dataset by name
-     */
     get(name) {
         return this.datasets.get(name);
     }
-    /**
-     * Lists all loaded datasets
-     */
     list() {
         return [...this.datasets.keys()];
     }

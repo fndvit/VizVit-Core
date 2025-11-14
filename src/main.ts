@@ -1,5 +1,5 @@
-import { Database } from "./db/VizVitDB.ts";
-import { datasetToBarChart } from "./bridge/barchartBridge.ts";
+import { Database } from "./db/VizVitDB.js";
+import { datasetToBarChart } from "./bridge/barchartBridge.js";
 
 const db = new Database("./data");
 db.loadAll();

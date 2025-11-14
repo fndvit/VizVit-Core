@@ -1,4 +1,4 @@
-import type { Dataset } from "../types/index.ts";
+import type { Dataset } from "../types/index.js";
 export declare class Database {
     private datasets;
     private baseDir;
@@ -16,4 +16,3 @@ export declare class Database {
      */
     list(): string[];
 }
-//# sourceMappingURL=VizVitDB.d.ts.map

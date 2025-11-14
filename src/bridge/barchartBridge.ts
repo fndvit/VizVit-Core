@@ -1,5 +1,5 @@
 // src/bridge/barchartBridge.ts
-import type { Dataset, Row } from "../types/index.ts";
+import type { Dataset, Row } from "../types/index.js";
 
 export interface BarChartItem {
   label: string;

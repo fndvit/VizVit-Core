@@ -1,4 +1,4 @@
-import type { Dataset } from "../types/index.ts";
+import type { Dataset } from "../types/index.js";
 export interface BarChartItem {
     label: string;
     value: number;

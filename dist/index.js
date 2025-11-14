@@ -1,5 +1,4 @@
-import { Database } from "./db/VizVitDB.ts";
-const db = new Database("./data");
-db.loadAll();
-console.log(db.list()); // ['products', 'stores', 'sales', ...]
-console.log(db.get("sales")?.rows.slice(0, 3));
+// Export del DB
+export { Database } from "./db/VizVitDB.js";
+export { datasetToBarChart } from "./bridge/barchartBridge.js";
+//# sourceMappingURL=index.js.map

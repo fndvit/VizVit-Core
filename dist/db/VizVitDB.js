@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
-import { readCSV } from "../sources/csvSource.ts";
+import { readCSV } from "../sources/csvSource.js";
 export class Database {
+    datasets = new Map();
+    baseDir;
     constructor(baseDir) {
-        this.datasets = new Map();
         this.baseDir = baseDir;
     }
     /**
@@ -49,3 +50,4 @@ export class Database {
         return [...this.datasets.keys()];
     }
 }
+//# sourceMappingURL=VizVitDB.js.map

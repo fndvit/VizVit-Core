@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
-import type { Dataset, Row } from "../types/index.ts";
-import { readCSV } from "../sources/csvSource.ts";
+import type { Dataset, Row } from "../types/index.js";
+import { readCSV } from "../sources/csvSource.js";
 
 export class Database {
   private datasets: Map<string, Dataset> = new Map();

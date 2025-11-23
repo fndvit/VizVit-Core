@@ -1,14 +1,46 @@
-const array = [
-  { a: 1, b: 2 },
-  { a: 3, b: 4 },
-];
+// Cargar datasets CSV
+import { Database } from "./virtual-datastore/db/database.js";
+import type { Schema } from "./virtual-datastore/db/schema.js";
 
-import { createLookupFromArrayOfObjects } from "./utils/createLookup.js";
+async function example() {
+  //Calculate time taken
+  console.time("example");
 
-const lookup = createLookupFromArrayOfObjects(
-  array,
-  (item) => item.a,
-  (item) => item.b
-);
+  const db = new Database();
 
-console.log(lookup);
+  // Good for development and testing, if the dataset provided is not as expected it will throw errors
+  const paisesSchema: Schema = {
+    id: "number",
+    nombre: "string",
+    region: "string",
+    year: "number",
+    pib: "number",
+  };
+
+  db.registerSchema("paises", paisesSchema);
+
+  //TODO: Add the option to register schema when loading the dataset
+  //TODO: Add the option to choose the schema name loading the dataset
+  await db.loadAll(
+    ["http://localhost:3000/src/virtual-datastore/data/test.csv"],
+    {
+      validate: true,
+    }
+  );
+  const dataset = db.get("test");
+
+  console.log(`Dataset 'test' loaded with ${dataset?.rows.length} rows.`);
+
+  // Prepare the query, in this case we want to get the top 5 countries in Europe by GDP between 2000 and 2020
+
+  // Show time taken
+  console.timeEnd("example");
+
+  console.time("example");
+
+  db.addDataset("paises", dataset!);
+
+  console.timeEnd("example");
+}
+
+example();

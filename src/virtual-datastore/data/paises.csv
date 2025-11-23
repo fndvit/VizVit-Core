@@ -1,0 +1,11 @@
+id,nombre,region,region_id,year,pib
+1,España,EU,100,2000,500
+2,Francia,EU,101,2005,600
+3,Alemania,EU,102,2010,700
+4,Italia,EU,103,2015,650
+5,Portugal,EU,104,2020,400
+6,China,AS,200,2000,1000
+7,Japón,AS,201,2005,1200
+8,India,AS,202,2010,900
+9,Brasil,SA,300,2015,800
+10,Argentina,SA,301,2020,700

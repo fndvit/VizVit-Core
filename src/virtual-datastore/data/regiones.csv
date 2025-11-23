@@ -1,0 +1,13 @@
+id,nombre,parent_id,level
+100,Europa,,1
+101,Francia,100,2
+102,Alemania,100,2
+103,Italia,100,2
+104,Portugal,100,2
+200,Asia,,1
+201,China,200,2
+202,Japón,200,2
+203,India,200,2
+300,América del Sur,,1
+301,Brasil,300,2
+302,Argentina,300,2
